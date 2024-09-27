@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control y Procedimientos</title>
+    <style>
+        body {
+            font-family: 'Century Gothic', sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 20px;
+        }
+        #header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        #logo {
+            width: 100px;
+            height: auto;
+            margin-right: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-align: left;
+            flex-grow: 1;
+            word-wrap: break-word;
+        }
+        #searchBar {
+            width: 50%; /* Ajustar el tamaño del buscador */
+            padding: 10px; /* Hacer el buscador más grueso */
+            margin: 10px auto; /* Centrar el buscador */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center; /* Centrar texto en el buscador */
+            display: block; /* Asegurar que el buscador sea un bloque */
+        }
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .button {
+            padding: 15px;
+            font-size: 1.2em;
+            color: rgb(0, 0, 0);
+            background-color: rgb(78, 233, 253);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: rgb(0, 247, 255);
+        }
+        .images-container {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        .return-button {
+            display: none;
+            padding: 10px;
+            font-size: 1em;
+            color: white;
+            background-color: red;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px auto; /* Centrar el botón */
+            text-align: center; /* Centrar texto en el botón */
+            width: 150px; /* Ajustar ancho del botón */
+        }
+        .return-button:hover {
+            background-color: darkred;
+        }
+
+        /* Estilos Responsivos */
+        @media (max-width: 768px) {
+            #header {
+                flex-direction: row;
+            }
+            #logo {
+                width: 80px;
+            }
+            h1 {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            #logo {
+                width: 60px;
+            }
+            .button {
+                font-size: 1em;
+            }
+            #searchBar {
+                padding: 10px; /* Mantener el buscador grueso */
+                width: 80%; /* Ajustar el tamaño en móviles */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <img src="logomc.jpeg" alt="Logo" id="logo">
+        <h1>CONTROL Y PROCEDIMIENTOS CUENTAS DE ESTADOS FINANCIEROS DEL PUNTO DE VISTA FISCAL</h1>
+    </div>
+
+    <input type="text" id="searchBar" placeholder="Buscar...">
+
+    <div class="return-button" id="returnButton" onclick="regresarPaginaPrincipal()">Regresar</div>
+
+    <div id="initial-section" class="button-container">
+        <button class="button" onclick="mostrarImagenes(1)">ESTADOS DE RESULTADOS</button>
+        <button class="button" onclick="mostrarImagenes(2)">VENTAS</button>
+        <button class="button" onclick="mostrarImagenes(3)">CONTROL DIRECTO DE SAT CON LAS FEL</button>
+        <button class="button" onclick="mostrarImagenes(4)">EXPORTACIÓN DE VENTAS</button>
+        <button class="button" onclick="mostrarImagenes(5)">EXPORTACIÓN DE SERVICIOS</button>
+        <button class="button" onclick="mostrarImagenes(6)">COSTO DE VENTAS</button>
+        <button class="button" onclick="mostrarImagenes(7)">PROBLEMAS COMUNES</button>
+        <button class="button" onclick="mostrarImagenes(8)">MARGEN DE GANANVCIA BRUTA</button>
+        <button class="button" onclick="mostrarImagenes(9)">GASTOS DEDUCIBLES</button>
+        <button class="button" onclick="mostrarImagenes(10)">GASOS NO DEDUCIBLES</button>
+        <button class="button" onclick="mostrarImagenes(11)">REGULACIONES DE IGSS</button>
+        <button class="button" onclick="mostrarImagenes(12)">BALANCE GENERAL</button>
+        <button class="button" onclick="mostrarImagenes(13)">CAJA Y BANCOS</button>
+        <button class="button" onclick="mostrarImagenes(14)">EGRESOS QUE NO CORRESPONDEN A LA EMPRESA</button>
+        <button class="button" onclick="mostrarImagenes(15)">INVENTARIO DE CUENTAS BANCARIAS</button>
+        <button class="button" onclick="mostrarImagenes(16)">CUENTAS POR COBRAR CLIENTES</button>
+        <button class="button" onclick="mostrarImagenes(17)">CUENTAS POR LIQUIDAR</button>
+        <button class="button" onclick="mostrarImagenes(18)">POR COBRAR RELACIONADAS</button>
+        <button class="button" onclick="mostrarImagenes(19)">TRAZABILIDAD DE PAGOS</button>
+        <button class="button" onclick="mostrarImagenes(20)">CUENTAS DE ACTIVO CORRIENTE</button>
+        <button class="button" onclick="mostrarImagenes(21)">INVERSIONES</button>
+    <button class="button" onclick="mostrarImagenes(22)">ACTIVO NO CORRIENTE (ACTIVO FIJO)</button>
+    <button class="button" onclick="mostrarImagenes(23)">ART.27 DE LA LAT: DEPRECIACIÓN LÍNEA RECTA: EL PORCENTAJE
+        A APLICAR NO PUEDE SER VARIADO</button>
+    <button class="button" onclick="mostrarImagenes(24)">ART.26 LAT, DEPRECIACIÓN DE BIENES INMUEBLES</button>
+    <button class="button" onclick="mostrarImagenes(25)">ART.176 LAT, DEPRECIACIÓN DE INMUEBLES
+        ADQUIRIDOS ANTES DEL 1 DE ENERO 2013.</button>
+    <button class="button" onclick="mostrarImagenes(26)">ACTIVOS INTANGIBLES</button>
+    <button class="button" onclick="mostrarImagenes(27)">ACTIVOS INTANGIBLES
+        PROGRAMAS INFORMÁTICOS IMPORTADOS</button>
+    <button class="button" onclick="mostrarImagenes(28)">GASTOS DE ORGANIZACIÓN</button>
+    <button class="button" onclick="mostrarImagenes(29)">ART.33 DE LA LAT, SON ACTIVOS INTANGIBLES</button>
+    <button class="button" onclick="mostrarImagenes(30)">PROVISION DE GASTOS Y OTRAS CUENTAS POR PAGAR</button>
+    <button class="button" onclick="mostrarImagenes(31)">CUENTAS DEL PASIVO
+        PROVEEDORES LOCALES Y DEL EXTERIOR</button>
+    <button class="button" onclick="mostrarImagenes(32)">INTEGRACIÓN DE PROVEEDORES</button>
+    <button class="button" onclick="mostrarImagenes(33)">CUENTAS DEL PASIVO</button>
+    <button class="button" onclick="mostrarImagenes(34)">PRESTAMOS BANCOS LOCALES Y DEL EXTERIOR</button>
+    <button class="button" onclick="mostrarImagenes(35)">LA SAT EXIGE LA SIGUIENTE INTEGRACIÓN</button>
+    <button class="button" onclick="mostrarImagenes(36)">APORTACIONES POR CAPITALIZAR</button>
+    <button class="button" onclick="mostrarImagenes(37)">CAPITAL SOCIAL</button>
+    <button class="button" onclick="mostrarImagenes(38)">UTILIDADES y PÉRDIDAS</button>
+    <button class="button" onclick="mostrarImagenes(39)">RESERVA LEGAL</button>
+
+
+    </div>
+
+    <div class="images-container" id="imagesContainer">
+        <div id="imageHolder"></div> <!-- Contenedor para las imágenes -->
+    </div>
+
+    <script>
+        const buttonImages = {
+            1: ["ESTADOS DE RESULTADOS.jpeg"],
+            2: ["VENTAS.jpeg"],
+            3: ["CONTROL DIRECTO DE SAT CON LAS FEL.jpeg"],
+            4: ["EXPORTACIÓN DE VENTAS.jpeg"],
+            5: ["EXPORTACIÓN DE SERVICIOS.jpeg"],
+            6: ["COSTO DE VENTAS.jpeg"],
+            7: ["PROBLEMAS COMUNES.jpeg"],
+            8: ["MARGEN DE GANANVCIA BRUTA.jpeg"],
+            9: ["GASTOS DEDUCIBLES.jpeg", "GASTOS DEDUCIBLES1.jpeg"],
+            10: ["GASOS NO DEDUCIBLES.jpeg"],
+            11: ["REGULACIONES DE IGSS.jpeg"],
+            12: ["BALANCE GENERAL.jpeg"],
+            13: ["CAJA Y BANCOS.jpeg"],
+            14: ["EGRESOS QUE NO CORRESPONDEN A LA EMPRESA.jpeg"],
+            15:["INVENTARIO DE CUENTAS BANCARIAS.jpeg", "INVENTARIO DE CUENTAS BANCARIAS1.jpeg"],
+            16: ["CUENTAS POR COBRAR CLIENTES.jpeg"],
+            17: ["CUENTAS POR LIQUIDAR.jpeg", "CUENTAS POR LIQUIDAR1.jpeg"],
+            18: ["POR COBRAR RELACIONADAS.jpeg"],
+            19: ["TRAZABILIDAD DE PAGOS.jpeg"],
+            20: ["error.jpeg"],
+            
+    21: ["INVERSIONES.jpeg"],
+    22: ["ACTIVO NO CORRIENTE (ACTIVO FIJO).jpeg"],
+    23: ["23.jpeg"],
+    24: ["ART.26 LAT, DEPRECIACIÓN DE BIENES INMUEBLES.jpeg"],
+    25: ["25.jpeg"],
+    26: ["26.jpeg"],
+    27: ["27.jpeg", "27.1.jpeg", "27.2.jpeg"],
+    28: ["28.jpeg"],
+    29: ["29.jpeg"],
+    30: ["30.jpeg"],
+    31: ["31.jpeg"],
+    32: ["32.jpeg"],
+    33: ["33.jpeg"],
+    34: ["34.jpeg"],
+    35: ["35.jpeg"],
+    36: ["36.jpeg"],
+    37: ["37.jpeg"],
+    38: ["38.jpeg", "38.1.jpeg"],
+    39: ["39.jpeg"],
+    
+        };
+
+        function mostrarImagenes(buttonNumber) {
+            const imagesContainer = document.getElementById('imagesContainer');
+            const imageHolder = document.getElementById('imageHolder');
+            const returnButton = document.getElementById('returnButton');
+            const buttonContainer = document.getElementById('initial-section');
+            const searchBar = document.getElementById('searchBar');
+
+            buttonContainer.style.display = 'none';
+            searchBar.style.display = 'none'; // Ocultar el buscador en la sección de imágenes
+
+            imageHolder.innerHTML = '';
+
+            const images = buttonImages[buttonNumber];
+            images.forEach(image => {
+                const img = document.createElement('img');
+                img.src = image;
+                imageHolder.appendChild(img);
+            });
+
+            imagesContainer.style.display = 'flex';
+            returnButton.style.display = 'block'; // Mostrar el botón "Regresar"
+        }
+
+        function regresarPaginaPrincipal() {
+            const buttonContainer = document.getElementById('initial-section');
+            const imagesContainer = document.getElementById('imagesContainer');
+            const returnButton = document.getElementById('returnButton');
+            const searchBar = document.getElementById('searchBar');
+
+            buttonContainer.style.display = 'flex';
+            imagesContainer.style.display = 'none';
+            returnButton.style.display = 'none'; // Ocultar el botón "Regresar"
+            searchBar.style.display = 'block'; // Mostrar el buscador en la página principal
+        }
+
+        // Filtrado de botones
+        document.getElementById("searchBar").addEventListener("input", function() {
+            const filter = this.value.toLowerCase();
+            const buttons = document.querySelectorAll(".button");
+            buttons.forEach(button => {
+                const text = button.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    button.style.display = "";
+                } else {
+                    button.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
